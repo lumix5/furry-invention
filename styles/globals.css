@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tier-row {
+    border: 2px solid #1f1f1f;
+
+    background-size: cover;
+    box-shadow: inset 0 0 45px 5px rgba(0,0,0,0.7),0 0 5px 0 #000000;
+    color: #aaa9a9;
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    background: #0b0b0b;
+}

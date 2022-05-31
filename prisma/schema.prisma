@@ -1,0 +1,90 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model Killers {
+  killer_id     Int     @id @default(autoincrement())
+  id            String? @map("_id") @db.Text
+  name          String  @unique @db.Text
+  name_tag      String? @db.Text
+  full_name     String? @db.Text
+  alias         String? @db.Text
+  gender        String? @db.Text
+  nationality   String? @db.Text
+  realm         String? @db.Text
+  power         String? @db.Text
+  weapon        String? @db.Text
+  speed         String? @db.Text
+  terror_radius String? @db.Text
+  height        String? @db.Text
+  voice_actor   String? @db.Text
+  difficulty    String? @db.Text
+  overview      String? @db.Text
+  lore          String? @db.Text
+  dlc           String? @db.Text
+  dlc_id        Int?
+  is_free       String? @db.Text
+  is_ptb        String? @db.Text
+  lang          String? @db.Text
+  icon          Json?
+  perks         Json?
+  killervote Killervote[]
+}
+
+model Killervote {
+  id       Int      @id @default(autoincrement())
+  killerId Int
+  rating   Int
+  voted_on DateTime @default(now())
+  killer   Killers  @relation(fields: [killerId], references: [killer_id], map: "KillerVote_killerId_fkey")
+
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model Perks {
+  perk_id     Int     @id @default(autoincrement())
+  id          String? @map("_id") @db.Text
+  role        String? @db.Text
+  name        String? @db.Text
+  name_tag    String? @db.Text
+  perk_name   String  @unique @db.Text
+  perk_tag    String? @db.Text
+  description String? @db.Text
+  teach_level Int?
+  is_ptb      String? @db.Text
+  lang        String? @db.Text
+  icon        String? @db.Text
+
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model Survivors {
+  survivor_id Int     @id @default(autoincrement())
+  id          String? @map("_id") @db.Text
+  name        String  @unique @db.Text
+  full_name   String? @db.Text
+  name_tag    String? @db.Text
+  gender      String? @db.Text
+  role        String? @db.Text
+  nationality String? @db.Text
+  voice_actor String? @db.Text
+  overview    String? @db.Text
+  lore        String? @db.Text
+  difficulty  String? @db.Text
+  dlc         String? @db.Text
+  dlc_id      Int?
+  is_free     String? @db.Text
+  is_ptb      String? @db.Text
+  lang        String? @db.Text
+  icon        Json?
+  perks       Json?
+
+
+}
