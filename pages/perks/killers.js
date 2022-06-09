@@ -1,35 +1,54 @@
-import AllTiersWrapper from "../../components/AllTiersWrapper.js";
-import {AnimatePresence} from "framer-motion";
-import PerkCard from "../../components/PerkCard";
+import KillerYellowRankImg from "../../img/killer-yellow-rank.webp";
+import KillerPurpleRankImg from "../../img/killer-purple-rank.webp";
+import KillerRedRankImg from "../../img/IconRank_killer_1.webp";
+import PurpleCharImg from "../../img/TierCharBackground/purple-background.webp";
+import PurpleFioletCharImg from "../../img/TierCharBackground/PurpleFioletTierChar.webp";
+import YellowTierCharImg from "../../img/TierCharBackground/yellowTierBackground.webp";
+import BrownTierCharImg from "../../img/TierCharBackground/yellowTierBackgroundChar.webp";
 import React from "react";
+import AllTiersWrapper from "../../components/AllTiersWrapper";
 
-const KillersPerks = ({killerPerks}) => {
-    killerPerks = Object.values(killerPerks)
+const Killers = ({ killers }) => {
+  const mockarray = [
+    {
+      TierChar: "S",
+      TierMainColor: "red-700",
+      TierSecondaryColor: "red-400",
+      TierSkullImg: KillerRedRankImg,
+      TierCharBackground: PurpleFioletCharImg,
+    },
+    {
+      TierChar: "A",
+      TierMainColor: "purple-700",
+      TierSecondaryColor: "purple-400",
+      TierSkullImg: KillerPurpleRankImg,
+      TierCharBackground: PurpleCharImg,
+    },
+    {
+      TierChar: "B",
+      TierMainColor: "green-700",
+      TierSecondaryColor: "green-400",
+      TierSkullImg: KillerYellowRankImg,
+      TierCharBackground: YellowTierCharImg,
+    },
+    // {
+    //   TierChar: "C",
+    //   TierMainColor: "zinc-700",
+    //   TierSecondaryColor: "zinc-400",
+    //   TierSkullImg: KillerBrownRankImg,
+    //   TierCharBackground: BrownTierCharImg,
+    // },
+  ];
 
-    console.log(killerPerks)
-    return (
-        <AllTiersWrapper Perks={killerPerks}>
-                {/*<AnimatePresence>*/}
-                {/*    <div className="flex">*/}
-                {/*      {killerPerks.map((perk) => {*/}
-                {/*        console.log(perk);*/}
-                {/*        return <PerkCard perkImage={perk.icon} perkName={perk.perk_name} belongsToName={perk.name} perkDescription={perk.description} isAllFlagPerksFlag={true} key={perk._id}/>;*/}
-                {/*      })}*/}
-                {/*    </div>*/}
-                {/*</AnimatePresence>*/}
-        </AllTiersWrapper>
-    )
-}
+  return <AllTiersWrapper Iterate={killers}></AllTiersWrapper>;
+};
 
 export async function getServerSideProps() {
+  const killerResponse = await fetch("http:localhost/api/perks/killers");
 
-  const killerPerksResponse = await fetch(`http:localhost/perks/killer`);
-  const killerPerks = await killerPerksResponse.json();
+  const killers = await killerResponse.json();
 
-  console.log(killerPerks)
-
-  return {props: {killerPerks}};
+  return { props: { killers } };
 }
 
-
-export default KillersPerks;
+export default Killers;

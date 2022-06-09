@@ -1,48 +1,100 @@
-import React from 'react'
+import React from "react";
 import RandomizerLayout from "../../components/RandomizerLayout";
-import {BsArrowClockwise} from "react-icons/bs";
+import { BsArrowClockwise } from "react-icons/bs";
 import PerkCard from "../../components/PerkCard";
-import { useRouter } from 'next/router'
-import KillerRedRankImg from '../../img/IconRank_killer_1.webp'
+import { useRouter } from "next/router";
+import KillerRedRankImg from "../../img/IconRank_killer_1.webp";
 import Card from "../../components/Card";
+import axios from "axios";
+import {useRouterRefresh} from "../../components/SmallRating";
 
-function killer({killerPerks, killer}) {
-  const router = useRouter()
-  let killerIcon = JSON.parse(killer[0].icon)
+function killer({ killerPerks, killer }) {
+
+  const refresh = useRouterRefresh();
+
   return (
-
     <RandomizerLayout>
-      <div className="flex justify-center flex-col items-center">
-        <div className="flex items-center relative" >
+      <div className="flex flex-col items-center justify-center">
+        <div className="relative flex items-center">
           <BsArrowClockwise
             color={"white"}
             size={35}
-            className="cursor-pointer absolute -left-8"
-            onClick={() => router.reload(window.location.pathname)}
+            className="absolute cursor-pointer -left-8"
+            onClick={() => refresh()}
           />
-          <Card TierMainColor={"red"} TierSkullImg={KillerRedRankImg} KillerImage={killerIcon.portrait}/>
+          <Card
+            TierMainColor={"red"}
+            isWithRating={false}
+            TierSkullImg={KillerRedRankImg}
+            characterIcon={killer[0].imgs.portrait}
+          />
         </div>
         <div className="flex flex-wrap items-center justify-center">
-          {killerPerks.map((perk) => {
-            console.log(perk);
-            return <PerkCard perkImage={perk.icon} perkName={perk.perk_name} belongsToName={perk.name} perkDescription={perk.description}/>;
-          })}
+          <PerkCard
+            perkImage={killerPerks[0][0].icon}
+            perkName={killerPerks[0][0].name}
+            belongsToName={killerPerks[0][0].killerName}
+            perkDescription={killerPerks[0][0].description}
+            withRating={false}
+            withAnimation={false}
+            withoutFullHeight={false}
+          />
+          <PerkCard
+            perkImage={killerPerks[1][0].icon}
+            perkName={killerPerks[1][0].name}
+            belongsToName={killerPerks[1][0].killerName}
+            perkDescription={killerPerks[1][0].description}
+            withRating={false}
+            withAnimation={false}
+            withoutFullHeight={false}
+          />
+          <PerkCard
+            perkImage={killerPerks[2][0].icon}
+            perkName={killerPerks[2][0].name}
+            belongsToName={killerPerks[2][0].killerName}
+            perkDescription={killerPerks[2][0].description}
+            withRating={false}
+            withAnimation={false}
+            withoutFullHeight={false}
+          />
+          <PerkCard
+            perkImage={killerPerks[3][0].icon}
+            perkName={killerPerks[3][0].name}
+            belongsToName={killerPerks[3][0].killerName}
+            perkDescription={killerPerks[3][0].description}
+            withRating={false}
+            withAnimation={false}
+            withoutFullHeight={false}
+          />
         </div>
       </div>
     </RandomizerLayout>
-  )
+  );
 }
 
 export async function getServerSideProps() {
+  const killerPerksResponse = await axios.get(
+    `https://dead-by-api.herokuapp.com/api/killers/random`
+  );
 
-  const killerPerksResponse = await fetch(`http:localhost/random/killer/perks`);
-  const killerPerks = await killerPerksResponse.json();
+  let urls = [
+    "https://dead-by-api.herokuapp.com/api/perks/killer/random",
+    "https://dead-by-api.herokuapp.com/api/perks/killer/random",
+    "https://dead-by-api.herokuapp.com/api/perks/killer/random",
+    "https://dead-by-api.herokuapp.com/api/perks/killer/random",
+  ];
 
-  const killerResponse = await fetch(`http:localhost/random/killer`);
-  const killer = await killerResponse.json();
+  let requests = urls.map((url) => axios.get(url));
 
+  let killerPerks = [];
 
-  return {props: {killerPerks, killer}};
+  await Promise.all(requests).then((responses) =>
+    responses.forEach((response) => killerPerks.push(response.data.data))
+  );
+
+  const killer = await killerPerksResponse.data.data;
+
+  return { props: { killerPerks, killer } };
 }
 
 export default killer;

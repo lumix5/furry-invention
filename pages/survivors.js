@@ -1,14 +1,16 @@
-import KillerYellowRankImg from "../../img/killer-yellow-rank.webp";
-import KillerPurpleRankImg from "../../img/killer-purple-rank.webp";
-import KillerRedRankImg from "../../img/IconRank_killer_1.webp";
-import PurpleCharImg from "../../img/TierCharBackground/purple-background.webp";
-import PurpleFioletCharImg from "../../img/TierCharBackground/PurpleFioletTierChar.webp";
-import YellowTierCharImg from "../../img/TierCharBackground/yellowTierBackground.webp";
-import BrownTierCharImg from "../../img/TierCharBackground/yellowTierBackgroundChar.webp";
+import KillerYellowRankImg from "../img/killer-yellow-rank.webp";
+import KillerPurpleRankImg from "../img/killer-purple-rank.webp";
+import KillerRedRankImg from "../img/IconRank_killer_1.webp";
+import PurpleCharImg from "../img/TierCharBackground/purple-background.webp";
+import PurpleFioletCharImg from "../img/TierCharBackground/PurpleFioletTierChar.webp";
+import YellowTierCharImg from "../img/TierCharBackground/yellowTierBackground.webp";
+import BrownTierCharImg from "../img/TierCharBackground/yellowTierBackgroundChar.webp";
 import React from "react";
-import AllTiersWrapper from "../../components/AllTiersWrapper";
 
-const survivors = ({ survivorsPerks }) => {
+import AllTiersWrapper from "../components/AllTiersWrapper";
+
+
+const survivors = ({survivors}) => {
   const mockarray = [
     {
       TierChar: "S",
@@ -47,7 +49,7 @@ const survivors = ({ survivorsPerks }) => {
       // TierSecondaryColor={TierSecondaryColor}
       // TierCharBackground={TierCharBackground}
       // KillerOrSurvivorInTier={killers}
-      Iterate={survivorsPerks}
+      Iterate={survivors}
     >
       {/* <AnimatePresence>
                             <div className="flex">
@@ -68,13 +70,11 @@ const survivors = ({ survivorsPerks }) => {
 };
 
 export async function getServerSideProps() {
-  const survivorsPerksResponse = await fetch(
-    "http:localhost/api/perks/survivors"
-  );
+  const survivorsResponse = await fetch("http:localhost/api/survivors");
 
-  const survivorsPerks = await survivorsPerksResponse.json();
+  const survivors = await survivorsResponse.json();
 
-  return { props: { survivorsPerks } };
+  return {props: {survivors}};
 }
 
 export default survivors;

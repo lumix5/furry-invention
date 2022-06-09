@@ -1,52 +1,97 @@
-import React from 'react'
+import React from "react";
 import RandomizerLayout from "../../components/RandomizerLayout";
-import {BsArrowClockwise} from "react-icons/bs";
+import { BsArrowClockwise } from "react-icons/bs";
 import PerkCard from "../../components/PerkCard";
-import KillerRedRankImg from '../../img/IconRank_killer_1.webp'
+
 import Card from "../../components/Card";
-import {useRouter} from "next/router";
+import axios from "axios";
+import { useRouterRefresh } from "../../components/SmallRating";
 
 function Survivor({ SurvivorPerks, Survivor }) {
-  const router = useRouter()
-  let survivorIcon = JSON.parse(Survivor[0].icon)
-  console.log(survivorIcon.portrait)
+  const refresh = useRouterRefresh();
+
   return (
     <RandomizerLayout>
-      <div className="flex justify-center flex-col items-center">
-        <div className="flex items-center relative" >
+      <div className="flex flex-col items-center justify-center">
+        <div className="relative flex items-center">
           <BsArrowClockwise
             color={"white"}
             size={35}
-            className="cursor-pointer absolute -left-8"
-            onClick={() => router.reload(window.location.pathname)}
+            className="absolute cursor-pointer -left-8"
+            onClick={() => refresh()}
           />
-          <Card TierMainColor={"red"} TierSkullImg={KillerRedRankImg} KillerImage={survivorIcon.portrait}/>
-          <div className="text-white text-lg">{Survivor.name}</div>
+          <Card
+            TierMainColor={"red"}
+            isWithRating={false}
+
+            characterIcon={Survivor[0].imgs.portrait}
+          />
         </div>
         <div className="flex flex-wrap items-center justify-center">
-          {SurvivorPerks.map((perk) => {
-            console.log(perk);
-            return <PerkCard perkImage={perk.icon} perkName={perk.perk_name} belongsToName={perk.name} perkDescription={perk.description}/>;
-          })}
+          <PerkCard
+            perkImage={SurvivorPerks[0][0].icon}
+            perkName={SurvivorPerks[0][0].name}
+            belongsToName={SurvivorPerks[0][0].SurvivorName}
+            perkDescription={SurvivorPerks[0][0].description}
+            withRating={false}
+            withAnimation={false}
+            withoutFullHeight={false}
+          />
+          <PerkCard
+            perkImage={SurvivorPerks[1][0].icon}
+            perkName={SurvivorPerks[1][0].name}
+            belongsToName={SurvivorPerks[1][0].SurvivorName}
+            perkDescription={SurvivorPerks[1][0].description}
+            withRating={false}
+            withAnimation={false}
+            withoutFullHeight={false}
+          />
+          <PerkCard
+            perkImage={SurvivorPerks[2][0].icon}
+            perkName={SurvivorPerks[2][0].name}
+            belongsToName={SurvivorPerks[2][0].SurvivorName}
+            perkDescription={SurvivorPerks[2][0].description}
+            withRating={false}
+            withAnimation={false}
+            withoutFullHeight={false}
+          />
+          <PerkCard
+            perkImage={SurvivorPerks[3][0].icon}
+            perkName={SurvivorPerks[3][0].name}
+            belongsToName={SurvivorPerks[3][0].SurvivorName}
+            perkDescription={SurvivorPerks[3][0].description}
+            withRating={false}
+            withAnimation={false}
+            withoutFullHeight={false}
+          />
         </div>
       </div>
     </RandomizerLayout>
-  )
+  );
 }
 
 export async function getServerSideProps() {
-  //TODO PROMISE ALL
-  // Fetch data from external API
+  const SurvivorPerksResponse = await axios.get(
+    `https://dead-by-api.herokuapp.com/api/survs/random`
+  );
 
+  let urls = [
+    "https://dead-by-api.herokuapp.com/api/perks/surv/random",
+    "https://dead-by-api.herokuapp.com/api/perks/surv/random",
+    "https://dead-by-api.herokuapp.com/api/perks/surv/random",
+    "https://dead-by-api.herokuapp.com/api/perks/surv/random",
+  ];
 
-  const SurvivorResponse = await fetch(`http:localhost/random/survivor`);
-  const Survivor = await SurvivorResponse.json();
+  let requests = urls.map((url) => axios.get(url));
 
+  let SurvivorPerks = [];
 
-  const SurvivorPerksResponse = await fetch(`http:localhost/random/survivor/perks`);
-  const SurvivorPerks = await SurvivorPerksResponse.json();
+  await Promise.all(requests).then((responses) =>
+    responses.forEach((response) => SurvivorPerks.push(response.data.data))
+  );
 
-  // Pass data to the page via props
+  const Survivor = await SurvivorPerksResponse.data.data;
+
   return { props: { SurvivorPerks, Survivor } };
 }
 
