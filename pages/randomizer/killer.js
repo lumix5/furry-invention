@@ -10,6 +10,7 @@ import {useRouterRefresh} from "../../components/SmallRating";
 
 function killer({ killerPerks, killer }) {
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const refresh = useRouterRefresh();
 
   return (
