@@ -31,7 +31,7 @@ async function sendRating(rating) {
 
     if (router.pathname === "/killers" || router.pathname === "/survivors") {
       await axios.post(
-        `http://${process.env.BACKEND_URL}/api/${
+        `https://${process.env.BACKEND_URL}/api/${
           router.pathname === "/killers" ? "killers" : "survivors"
         }/vote?${router.pathname === "/killers" ? "killerId" : "survivorId"}=${
           character._id
@@ -39,7 +39,7 @@ async function sendRating(rating) {
       );
     } else {
       await axios.post(
-        `http://${process.env.BACKEND_URL}/api/${
+        `https://${process.env.BACKEND_URL}/api/${
           router.pathname === "/perks/killers"
             ? "perks/killers"
             : "perks/survivors"
