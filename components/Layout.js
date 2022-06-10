@@ -21,6 +21,7 @@ const Layout = ({ children }) => {
           rel="stylesheet"
           href="https://unpkg.com/flowbite@1.4.3/dist/flowbite.min.css"
         />
+        <meta name="google-site-verification" content="X1Od0_qurw8FlBO0l-oN4L_kZAmkKHjfD9XZSrAtdvU" />
       </Head>
 
       <div className="min-h-screen h-full bg-zinc-800 w-full flex flex-col items-center">
