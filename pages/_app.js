@@ -6,8 +6,10 @@ import { v4 as uuidv4 } from "uuid";
 import { useEffect } from "react";
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 
+
+
 function MyApp({ Component, pageProps }) {
-    console.log(uuidv4(), "uuid");
+
     const queryClient = new QueryClient()
   useEffect(() => {
     if (localStorage.hasOwnProperty("clientId")) {

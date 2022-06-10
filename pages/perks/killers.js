@@ -44,7 +44,7 @@ const Killers = ({ killers }) => {
 };
 
 export async function getServerSideProps() {
-  const killerResponse = await fetch("http:localhost/api/perks/killers");
+  const killerResponse = await fetch(`http://${process.env.BACKEND_URL}/api/perks/killers`);
 
   const killers = await killerResponse.json();
 

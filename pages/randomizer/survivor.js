@@ -31,7 +31,7 @@ function Survivor({ SurvivorPerks, Survivor }) {
           <PerkCard
             perkImage={SurvivorPerks[0][0].icon}
             perkName={SurvivorPerks[0][0].name}
-            belongsToName={SurvivorPerks[0][0].SurvivorName}
+            belongsToName={SurvivorPerks[0][0].survivorName}
             perkDescription={SurvivorPerks[0][0].description}
             withRating={false}
             withAnimation={false}
@@ -40,7 +40,7 @@ function Survivor({ SurvivorPerks, Survivor }) {
           <PerkCard
             perkImage={SurvivorPerks[1][0].icon}
             perkName={SurvivorPerks[1][0].name}
-            belongsToName={SurvivorPerks[1][0].SurvivorName}
+            belongsToName={SurvivorPerks[1][0].survivorName}
             perkDescription={SurvivorPerks[1][0].description}
             withRating={false}
             withAnimation={false}
@@ -49,7 +49,7 @@ function Survivor({ SurvivorPerks, Survivor }) {
           <PerkCard
             perkImage={SurvivorPerks[2][0].icon}
             perkName={SurvivorPerks[2][0].name}
-            belongsToName={SurvivorPerks[2][0].SurvivorName}
+            belongsToName={SurvivorPerks[2][0].survivorName}
             perkDescription={SurvivorPerks[2][0].description}
             withRating={false}
             withAnimation={false}
@@ -58,7 +58,7 @@ function Survivor({ SurvivorPerks, Survivor }) {
           <PerkCard
             perkImage={SurvivorPerks[3][0].icon}
             perkName={SurvivorPerks[3][0].name}
-            belongsToName={SurvivorPerks[3][0].SurvivorName}
+            belongsToName={SurvivorPerks[3][0].survivorName}
             perkDescription={SurvivorPerks[3][0].description}
             withRating={false}
             withAnimation={false}

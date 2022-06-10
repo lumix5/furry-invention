@@ -40,10 +40,10 @@ function RandomizerLayout({children}) {
 export async function getServerSideProps() {
   //TODO PROMISE ALL
   // Fetch data from external API
-  const killerPerksRepsonse = await fetch(`http:localhost/random/killer/perks`);
+  const killerPerksRepsonse = await fetch(`http://${process.env.BACKEND_URL}/random/killer/perks`);
   const killerPerks = await killerPerksRepsonse.json();
 
-  const killerResponse = await fetch(`http:localhost/random/killer`);
+  const killerResponse = await fetch(`http://${process.env.BACKEND_URL}/random/killer`);
   const killer = await killerResponse.json();
 
   // Pass data to the page via props

@@ -45,3 +45,4 @@ yarn-error.log*
 # Editor-based HTTP Client requests
 /httpRequests/
 
+!/.env.local

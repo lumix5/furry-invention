@@ -70,7 +70,7 @@ const survivors = ({survivors}) => {
 };
 
 export async function getServerSideProps() {
-  const survivorsResponse = await fetch("http:localhost/api/survivors");
+  const survivorsResponse = await fetch(`http://${process.env.BACKEND_URL}/api/survivors`);
 
   const survivors = await survivorsResponse.json();
 

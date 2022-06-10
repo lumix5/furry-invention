@@ -25,7 +25,6 @@ function TierWrapperHoc({
 
   let routerPath = router.pathname;
 
-  console.log(routerPath);
   return (
     <div className="m-5 p-5 bg-[#0b0b0b] border shadow-inner w-full flex flex-col md:flex-row items-center relative bg-cover bg-no-repeat bg-black bg-red-200 tier-row">
       <div

@@ -11,7 +11,7 @@ export default function Card({
   character,
   isWithRating = true,
 }) {
-  console.log(characterIcon)
+
   return (
     <div
       href="#"
