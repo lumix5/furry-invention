@@ -16,35 +16,35 @@ const Layout = ({ children }) => {
     <div>
       <Head>
         <title>Dead by Daylight Tier List</title>
-        <meta name="description" content="Dead by Daylight Tier List" />
+        <meta name="description" content="On this website you can rate and see tier list based on community votes" />
         <meta
           name="keywords"
           content="dbd meta, dbd tierlist, dead by daylight tier list, best killer in dbd, best survivor in dbd, best killer in dead by daylight, best survivor in dead by daylight, top perks dbd, best perks dbd, best survivors perks, top survivors perks dead by daylight"
         />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="author" content="lumix"/>
         <link
           rel="stylesheet"
           href="https://unpkg.com/flowbite@1.4.3/dist/flowbite.min.css"
         />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-4YS9J2YDH1"
-          strategy="afterInteractive"
+        <meta
+          name="google-site-verification"
+          content="X1Od0_qurw8FlBO0l-oN4L_kZAmkKHjfD9XZSrAtdvU"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
+      </Head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-4YS9J2YDH1"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments)}
           gtag('js', new Date());
 
           gtag('config', 'G-4YS9J2YDH1');
         `}
-        </Script>
-        <meta
-          name="google-site-verification"
-          content="X1Od0_qurw8FlBO0l-oN4L_kZAmkKHjfD9XZSrAtdvU"
-        />
-      </Head>
-
+      </Script>
       <div className="min-h-screen h-full bg-zinc-800 w-full flex flex-col items-center">
         <div className="min-h-full w-full">
           <nav className="bg-neutral-900">
