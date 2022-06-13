@@ -57,9 +57,8 @@ async function sendRating(rating) {
         value={value}
         precision={0.5}
         onChange={async (e, newValue) => {
-
-          setRating(newValue === null ? 1 : newValue);
-          await sendRating(newValue === null ? 1 : newValue);
+          setRating(newValue === null ? value : newValue);
+          await sendRating(newValue === null ? value : newValue);
           refresh()
         }}
       />
