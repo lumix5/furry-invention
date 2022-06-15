@@ -1,21 +1,10 @@
-import Head from "next/head";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import KillerImg from "../img/IconHelpLoading_killer.webp";
-import PlagueImg from "../img/K04_charSelect_portrait.webp";
-import KillerBrownRankImg from "../img/killer-brown-rank.webp";
-import KillerYellowRankImg from "../img/killer-yellow-rank.webp";
-import KillerPurpleRankImg from "../img/killer-purple-rank.webp";
-import KillerRedRankImg from "../img/IconRank_killer_1.webp";
-import styles from "../styles/Home.module.css";
-import { useRef, useState, useEffect } from "react";
-import { Tabs, Tab, TabList, TabPanels, TabPanel } from "@chakra-ui/react";
+import { Text } from '@mantine/core';
 
 
-
-
-function Home() {
-  return <div></div>
+function Index() {
+  return <Text className="text-white justify-center h-screen flex pt-5 text-3xl w-11/12" weight={700}>
+   you can vote by clicking on stars and see Dead by Daylight tier list created by the community
+  </Text>
 }
 
-export default Home
+export default Index

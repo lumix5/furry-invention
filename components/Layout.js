@@ -23,10 +23,7 @@ const Layout = ({ children }) => {
         />
         <link rel="icon" href="/favicon.ico" />
         <meta name="author" content="lumix"/>
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/flowbite@1.4.3/dist/flowbite.min.css"
-        />
+        
         <meta
           name="google-site-verification"
           content="X1Od0_qurw8FlBO0l-oN4L_kZAmkKHjfD9XZSrAtdvU"
@@ -36,6 +33,10 @@ const Layout = ({ children }) => {
         src="https://www.googletagmanager.com/gtag/js?id=G-4YS9J2YDH1"
         strategy="afterInteractive"
       />
+      <Script
+          rel="stylesheet"
+          href="https://unpkg.com/flowbite@1.4.3/dist/flowbite.min.css"
+        />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];

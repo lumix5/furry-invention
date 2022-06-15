@@ -1,11 +1,7 @@
 import React from 'react'
 
-import {Tabs, Center, Button} from "@mantine/core";
-import PerkCard from "../components/PerkCard";
-import Card from "../components/Card";
-import KillerRedRankImg from "../img/IconRank_killer_1.webp";
-import {BsArrowClockwise} from "react-icons/bs";
-import {useState, useEffect} from "react"
+import { Center, Button} from "@mantine/core";
+
 import {useRouter} from 'next/router'
 import Link from "next/link";
 

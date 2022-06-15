@@ -1,10 +1,7 @@
 import Image from "next/image";
 import PerkCard from "./PerkCard";
 import React from "react";
-import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { useState } from "react";
-import { Skeleton } from "@mantine/core";
 import { useRouter } from "next/router";
 import {v4 as uuidv4} from "uuid";
 

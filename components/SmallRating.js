@@ -1,10 +1,9 @@
-import {useState, React, useEffect, useRef} from "react";
+import { React, useEffect, } from "react";
 import { Rating } from "@mui/material";
 import axios from "axios";
-import {useInputState, useLocalStorage, useShallowEffect} from "@mantine/hooks";
+import { useLocalStorage, } from "@mantine/hooks";
 import { useRouter } from "next/router";
 import { AiTwotoneStar } from 'react-icons/ai';
-import { useForceUpdate } from '@mantine/hooks';
 import { useCallback } from 'react'
 
 export function useRouterRefresh() {
