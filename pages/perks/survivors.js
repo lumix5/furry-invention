@@ -31,25 +31,25 @@ const survivors = ({ survivorsPerks }) => {
       TierSkullImg: KillerYellowRankImg,
       TierCharBackground: YellowTierCharImg,
     },
-    // {
-    //   TierChar: "C",
-    //   TierMainColor: "zinc-700",
-    //   TierSecondaryColor: "zinc-400",
-    //   TierSkullImg: KillerBrownRankImg,
-    //   TierCharBackground: BrownTierCharImg,
-    // },
+    {
+      TierChar: "C",
+      TierMainColor: "zinc-700",
+      TierSecondaryColor: "zinc-400",
+      TierSkullImg: KillerBrownRankImg,
+      TierCharBackground: BrownTierCharImg,
+    },
   ];
 
   return (
     <AllTiersWrapper
-      // TierChar={TierChar}
-      // TierMainColor={TierMainColor}
-      // TierSecondaryColor={TierSecondaryColor}
-      // TierCharBackground={TierCharBackground}
-      // KillerOrSurvivorInTier={killers}
+      TierChar={TierChar}
+      TierMainColor={TierMainColor}
+      TierSecondaryColor={TierSecondaryColor}
+      TierCharBackground={TierCharBackground}
+      KillerOrSurvivorInTier={killers}
       Iterate={survivorsPerks}
     >
-      {/* <AnimatePresence>
+      {<AnimatePresence>
                             <div className="flex">
                                 <Card
                                     TierMainColor={TierMainColor}
@@ -62,7 +62,7 @@ const survivors = ({ survivorsPerks }) => {
                                     KillerImage={killerIcon}
                                 />
                             </div>
-                        </AnimatePresence> */}
+                        </AnimatePresence>}
     </AllTiersWrapper>
   );
 };
