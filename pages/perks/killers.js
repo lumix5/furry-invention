@@ -31,13 +31,6 @@ const Killers = ({ killers }) => {
       TierSkullImg: KillerYellowRankImg,
       TierCharBackground: YellowTierCharImg,
     },
-    // {
-    //   TierChar: "C",
-    //   TierMainColor: "zinc-700",
-    //   TierSecondaryColor: "zinc-400",
-    //   TierSkullImg: KillerBrownRankImg,
-    //   TierCharBackground: BrownTierCharImg,
-    // },
   ];
 
   return <AllTiersWrapper Iterate={killers}></AllTiersWrapper>;
