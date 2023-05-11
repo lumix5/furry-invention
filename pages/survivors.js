@@ -33,38 +33,12 @@ const survivors = ({survivors}) => {
       TierSkullImg: KillerYellowRankImg,
       TierCharBackground: YellowTierCharImg,
     },
-    // {
-    //   TierChar: "C",
-    //   TierMainColor: "zinc-700",
-    //   TierSecondaryColor: "zinc-400",
-    //   TierSkullImg: KillerBrownRankImg,
-    //   TierCharBackground: BrownTierCharImg,
-    // },
   ];
 
   return (
     <AllTiersWrapper
-      // TierChar={TierChar}
-      // TierMainColor={TierMainColor}
-      // TierSecondaryColor={TierSecondaryColor}
-      // TierCharBackground={TierCharBackground}
-      // KillerOrSurvivorInTier={killers}
       Iterate={survivors}
     >
-      {/* <AnimatePresence>
-                            <div className="flex">
-                                <Card
-                                    TierMainColor={TierMainColor}
-                                    TierSkullImg={TierSkullImg}
-                                    KillerImage={killerIcon}
-                                />
-                                <Card
-                                    TierMainColor={TierMainColor}
-                                    TierSkullImg={TierSkullImg}
-                                    KillerImage={killerIcon}
-                                />
-                            </div>
-                        </AnimatePresence> */}
     </AllTiersWrapper>
   );
 };
